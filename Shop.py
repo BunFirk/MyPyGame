@@ -13,24 +13,26 @@ class Shop:
         self.productEffects = {
         "swordEffects" : [
         f"{Fore.BLUE + Style.BRIGHT}Олядинение{Style.RESET_ALL}", 
-        f"{Fore.RED}Огненный клинок{Style.RESET_ALL}", 
+        f"{Fore.RED + Style.BRIGHT}Огненный клинок{Style.RESET_ALL}", 
         f"{Fore.BLUE + Style.BRIGHT}Пробитие{Style.RESET_ALL}", 
         f"{Fore.GREEN + Style.BRIGHT}Лёгкость{Style.RESET_ALL}", 
         f"{Fore.RED + Style.BRIGHT}Тяжесть{Style.RESET_ALL}", 
         f"{Fore.RED + Style.BRIGHT}Затупленость{Style.RESET_ALL}"]}
-        effectApply = []
         self.products = []
-        self. productsPrices = []
+        self.productsPrices = []
         self.weaponRarity = [1, 2, 3, 4, 5]
         self.productsPrice = 0
         
     def generateShop(self):
         self.products.clear()
         for i in range(1, 6):
-            self.productsPrice = self.priceMultiplier + random.randint(0, self.shopLevel + 3)
+            weaponRarityRandom = random.randint(1, self.shopLevel + 1)
+            weaponRarityOut = self.weaponRarity[weaponRarityRandom]
+            self.productsPrice = self.priceMultiplier + random.randint(0, weaponRarityOut + 3)
+            self.productsPrices = self.productsPrice
             effectsApply = random.choice(self.productEffects['swordEffects'
             ])
-            self.products.append(f"{i}. {Style.BRIGHT}{self.productsName[0]}{Style.RESET_ALL} -> {effectsApply} (${self.productsPrice})")
+            self.products.append(f"{i}. {Style.BRIGHT}{self.productsName[0]}{Style.RESET_ALL} -> {effectsApply}, редкость {Style.BRIGHT}{weaponRarityOut}{Style.RESET_ALL} (${self.productsPrice})")
         
     def productList(self):
         consoleTools.clearConsole()

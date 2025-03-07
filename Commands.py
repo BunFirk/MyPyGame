@@ -19,15 +19,18 @@ class Commands:
                     self.shop.productList()  # Выводим список товаров
                     self.shopInput = input("> ").strip().lower()
                     self.checkBuy = False
-                     self.wallet = 100
-                     self.
+                    self.wallet = 100
+                    self.productPriceOut.append(self.shop.productsPrices)
                     match self.shopInput:
                         case "1":
                             print("Вы точно хотите купить:")
                             print(self.shopList[0])
                             self.checkBuy = input("y/n:")
-                             match self.checkBuy:
+                            match self.checkBuy:
                               case "y"| "Y" | "yes" | "Yes" | "YES" :
+
+                                      self.wallet -=  self.productPriceOut[0]
+                                      print(f"Поздравляю с преобритением {self.shopList[0]}! У вас осатлось {Style.BRIGHT}{self.wallet}${Style.RESET_ALL}")
                                  
                                 
                             
