@@ -29,7 +29,7 @@ class Shop:
             weaponRarityRandom = random.randint(1, self.shopLevel + 1)
             weaponRarityOut = self.weaponRarity[weaponRarityRandom]
             self.productsPrice = self.priceMultiplier + random.randint(0, weaponRarityOut + 3)
-            self.productsPrices = self.productsPrice
+            self.productsPrices.append(self.productsPrice)
             effectsApply = random.choice(self.productEffects['swordEffects'
             ])
             self.products.append(f"{i}. {Style.BRIGHT}{self.productsName[0]}{Style.RESET_ALL} -> {effectsApply}, редкость {Style.BRIGHT}{weaponRarityOut}{Style.RESET_ALL} (${self.productsPrice})")

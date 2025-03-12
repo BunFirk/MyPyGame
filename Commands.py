@@ -9,6 +9,7 @@ class Commands:
         self.shop = Shop()
         self.shopList = self.shop.products
         self.run()  # Запускаем обработку команд
+        self.productPriceOut = []
 
     def run(self):
         while True:
@@ -20,7 +21,7 @@ class Commands:
                     self.shopInput = input("> ").strip().lower()
                     self.checkBuy = False
                     self.wallet = 100
-                    self.productPriceOut.append(self.shop.productsPrices)
+                    self.productPriceOut = self.shop.productsPrices
                     match self.shopInput:
                         case "1":
                             print("Вы точно хотите купить:")
